@@ -1,56 +1,36 @@
 package com.wallet;
 
+/**
+ * Clase que representa un usuario de la Wallet.
+ * Cada usuario tiene un nombre y una cuenta bancaria asociada.
+ */
 public class Usuario {
     private String nombre;
     private CuentaBancaria cuenta;
 
+    /**
+     * Constructor para crear un nuevo usuario con un nombre y una cuenta bancaria asociada.
+     * @param nombre El nombre del usuario.
+     * @param cuenta La cuenta bancaria asociada al usuario.
+     */
     public Usuario(String nombre, CuentaBancaria cuenta) {
         this.nombre = nombre;
         this.cuenta = cuenta;
     }
 
+    /**
+     * Obtiene la cuenta bancaria asociada al usuario.
+     * @return La cuenta bancaria asociada al usuario.
+     */
+    public CuentaBancaria getCuenta() {
+        return cuenta;
+    }
+
+    /**
+     * Obtiene el nombre del usuario.
+     * @return El nombre del usuario.
+     */
     public String getNombre() {
         return nombre;
-    }
-
-    public double getSaldo() {
-        return cuenta.getSaldo();
-    }
-
-    public void depositar(double cantidad) {
-        if (cantidad > 0) {
-            cuenta.depositar(cantidad);
-            System.out.println("Depósito de $" + cantidad + " realizado correctamente en la cuenta de " + nombre);
-        } else {
-            System.out.println("Cantidad inválida para depósito.");
-        }
-    }
-
-    public boolean retirar(double cantidad) {
-        if (cantidad > 0) {
-            if (cuenta.retirar(cantidad)) {
-                System.out.println("Retiro de $" + cantidad + " realizado correctamente de la cuenta de " + nombre);
-                return true;
-            } else {
-                System.out.println("No se pudo realizar el retiro. Saldo insuficiente en la cuenta de " + nombre);
-            }
-        } else {
-            System.out.println("Cantidad inválida para retiro.");
-        }
-        return false;
-    }
-
-    public boolean convertirMoneda(double cantidad, Moneda monedaDestino, double tasaCambio) {
-        if (cantidad > 0) {
-            if (cuenta.convertirMoneda(cantidad, monedaDestino, tasaCambio)) {
-                System.out.println("Conversión de $" + cantidad + " a " + monedaDestino.getNombre() + " realizada correctamente.");
-                return true;
-            } else {
-                System.out.println("No se pudo realizar la conversión. Saldo insuficiente en la cuenta de " + nombre);
-            }
-        } else {
-            System.out.println("Cantidad inválida para conversión.");
-        }
-        return false;
     }
 }
